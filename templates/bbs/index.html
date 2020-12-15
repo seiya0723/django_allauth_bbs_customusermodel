@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>簡易掲示板</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+    <main class="container">
+        <form class="my-2" method="POST">
+            {% csrf_token %}
+            <textarea class="form-control" name="comment"></textarea>
+            <input class="form-control" type="submit" value="送信">
+        </form>
+
+        {% for content in data %}
+        <div class="border p-2">
+            <div>投稿者の年齢:{{ content.age }}歳</div>
+            <div>{{ content.dt }}</div>
+            {{ content.comment }}
+        </div>
+        {% endfor %}
+
+    </main>
+</body>
+</html>
+
